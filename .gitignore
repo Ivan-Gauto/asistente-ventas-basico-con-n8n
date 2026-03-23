@@ -31,6 +31,8 @@ dist-ssr
 # Scripts de administración local de n8n (contienen API keys hardcodeadas)
 n8n/
 
+opencode.config.json
+
 # Assets generados localmente (Stitch, etc.)
 stitch_assets/
 
