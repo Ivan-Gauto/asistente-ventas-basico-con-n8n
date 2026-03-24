@@ -16,44 +16,7 @@ Interfaz de chat inteligente para gestión de inventario y ventas, conectada a u
 - **Estilos**: TailwindCSS v4
 - **Backend/IA**: n8n (self-hosted o cloud) + Airtable
 
-## 🚀 Inicio rápido
-
-### 1. Clonar e instalar dependencias
-
-```bash
-git clone <url-del-repo>
-cd chat-n8n
-npm install
-```
-
-### 2. Configurar variables de entorno
-
-```bash
-cp .env.example .env.local
-```
-
-Edita `.env.local` con tus valores reales:
-
-```env
-VITE_N8N_API_KEY=tu_api_key_de_n8n
-VITE_N8N_WEBHOOK_URL=/webhook-test/mi-chat-bot
-```
-
-### 3. Correr en desarrollo
-
-```bash
-npm run dev
-```
-
 > Requiere tener n8n corriendo en `http://localhost:5678` con el workflow "Agente Inteligente" activo.
-
-## 🌐 Despliegue en Vercel
-
-1. Importar el repositorio en [vercel.com](https://vercel.com)
-2. En *Settings → Environment Variables*, configurar:
-   - `VITE_N8N_API_KEY` → API key de tu instancia de n8n cloud
-   - `VITE_N8N_WEBHOOK_URL` → URL pública del webhook (ej: `https://tu-instancia.n8n.cloud/webhook/mi-chat-bot`)
-3. Deploy 🚀
 
 ## 📁 Estructura del proyecto
 
