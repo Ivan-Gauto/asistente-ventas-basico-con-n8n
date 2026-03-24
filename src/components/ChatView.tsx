@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Message } from '../types';
 
 type Props = {
@@ -19,15 +19,14 @@ export const ChatView: React.FC<Props> = ({
   chatFeedRef,
 }) => (
   <>
-    {/* Chat Feed */}
     <div
       ref={chatFeedRef}
-      className="flex-1 overflow-y-auto px-8 pt-8 pb-32 flex flex-col hide-scrollbar scroll-smooth"
+      className="flex-1 overflow-y-auto px-8 pt-8 pb-32 flex flex-col hide-scrollbar scroll-smooth bg-white dark:bg-[#0c0e13]"
     >
       {messages.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center text-center mt-12">
           <div className="max-w-md">
-            <div className="w-16 h-16 bg-[#65a7ef]/20 dark:bg-[#00497d]/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-[#0262a5]/10 dark:bg-[#00497d]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[#0262a5]/20">
               <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] text-3xl">
                 chat_bubble
               </span>
@@ -41,7 +40,7 @@ export const ChatView: React.FC<Props> = ({
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={() => setInputValue('Revisar inventario')}
-                className="p-4 bg-[#f1f3fd] dark:bg-[#1a1c1e] rounded-xl text-left hover:brightness-95 dark:hover:brightness-125 transition-all duration-200 border border-[#adb2bf]/20 dark:border-[#44474e]/20 shadow-sm cursor-pointer"
+                className="p-4 bg-[#f9f9ff] dark:bg-[#1a1c1e] rounded-xl text-left hover:brightness-95 transition-all duration-200 border border-[#cbd5e1] dark:border-[#44474e]/20 shadow-sm cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] mb-2 block">
                   inventory_2
@@ -55,7 +54,7 @@ export const ChatView: React.FC<Props> = ({
               </button>
               <button
                 onClick={() => setInputValue('Reporte de ventas')}
-                className="p-4 bg-[#f1f3fd] dark:bg-[#1a1c1e] rounded-xl text-left hover:brightness-95 dark:hover:brightness-125 transition-all duration-200 border border-[#adb2bf]/20 dark:border-[#44474e]/20 shadow-sm cursor-pointer"
+                className="p-4 bg-[#f9f9ff] dark:bg-[#1a1c1e] rounded-xl text-left hover:brightness-95 transition-all duration-200 border border-[#cbd5e1] dark:border-[#44474e]/20 shadow-sm cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] mb-2 block">
                   analytics
@@ -85,7 +84,7 @@ export const ChatView: React.FC<Props> = ({
                 className={
                   m.isUser
                     ? 'bg-[#0262a5] text-white p-4 rounded-2xl rounded-tr-sm shadow-md max-w-[70%]'
-                    : 'bg-[#e4e8f3] dark:bg-[#282a2e] text-[#2d333d] dark:text-[#e2e2e6] p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#adb2bf]/10 dark:border-[#44474e]/20'
+                    : 'bg-[#f1f3fd] dark:bg-[#282a2e] text-[#2d333d] dark:text-[#e2e2e6] p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#cbd5e1] dark:border-[#44474e]/20'
                 }
               >
                 <p className="font-body leading-relaxed whitespace-pre-wrap text-sm">{m.text}</p>
@@ -97,7 +96,7 @@ export const ChatView: React.FC<Props> = ({
           ))}
           {isTyping && (
             <div className="flex flex-col items-start max-w-3xl animate-in fade-in duration-300">
-              <div className="bg-[#e4e8f3] dark:bg-[#282a2e] p-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5 border border-[#adb2bf]/10 dark:border-[#44474e]/20">
+              <div className="bg-[#f1f3fd] dark:bg-[#282a2e] p-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5 border border-[#cbd5e1] dark:border-[#44474e]/20">
                 <div className="w-1.5 h-1.5 bg-[#5a5f6a] dark:bg-[#c4c7cf] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                 <div className="w-1.5 h-1.5 bg-[#5a5f6a] dark:bg-[#c4c7cf] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                 <div className="w-1.5 h-1.5 bg-[#5a5f6a] dark:bg-[#c4c7cf] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
@@ -108,12 +107,11 @@ export const ChatView: React.FC<Props> = ({
       )}
     </div>
 
-    {/* Input Area */}
-    <div className="px-8 pb-8 pt-4 absolute bottom-0 w-full bg-gradient-to-t from-[#ffffff] dark:from-[#0c0e13] via-[#ffffff]/90 dark:via-[#0c0e13]/90 to-transparent">
+    <div className="px-8 pb-8 pt-4 absolute bottom-0 w-full bg-gradient-to-t from-white dark:from-[#0c0e13] via-white/80 dark:via-[#0c0e13]/80 to-transparent">
       <div className="max-w-4xl mx-auto relative">
         <form
           onSubmit={handleSubmit}
-          className="flex items-center bg-[#e4e8f3] dark:bg-[#1a1c1e] rounded-full p-2 pl-6 pr-2 shadow-sm focus-within:ring-2 focus-within:ring-[#0262a5]/40 dark:focus-within:ring-[#65a7ef]/40 transition-all duration-300 border border-[#adb2bf]/10 dark:border-[#44474e]/20"
+          className="flex items-center bg-[#f9f9ff] dark:bg-[#1a1c1e] rounded-full p-2 pl-6 pr-2 shadow-sm focus-within:ring-2 focus-within:ring-[#0262a5]/40 dark:focus-within:ring-[#65a7ef]/40 transition-all duration-300 border border-[#cbd5e1] dark:border-[#44474e]/20"
         >
           <button
             type="button"
@@ -130,7 +128,7 @@ export const ChatView: React.FC<Props> = ({
           />
           <button
             type="submit"
-            className="bg-gradient-to-br from-[#0262a5] to-[#005692] dark:from-[#65a7ef] dark:to-[#00497d] text-white w-12 h-12 rounded-full flex items-center justify-center hover:translate-y-[-2px] transition-transform duration-200 active:scale-95 shadow-lg shadow-[#0262a5]/20 cursor-pointer"
+            className="bg-[#0262a5] dark:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:translate-y-[-2px] transition-transform duration-200 active:scale-95 shadow-lg cursor-pointer"
           >
             <span className="material-symbols-outlined">send</span>
           </button>

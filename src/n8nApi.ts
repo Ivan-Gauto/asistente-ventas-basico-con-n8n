@@ -40,7 +40,7 @@ export async function createN8nWorkflow(workflowName: string) {
   return data;
 }
 
-export async function sendToN8nWebhook(message: string, sessionId: string, webhookUrl: string = '/webhook-test/mi-chat-bot') {
+export async function sendToN8nWebhook(message: string, sessionId: string, webhookUrl: string = '/webhook/mi-chat-bot') {
   const res = await fetch(webhookUrl, {
     method: "POST",
     headers: {

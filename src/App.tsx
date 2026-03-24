@@ -4,13 +4,14 @@ import { TopBar } from './components/TopBar';
 import { ChatView } from './components/ChatView';
 import { SettingsView } from './components/SettingsView';
 import { RightPanel } from './components/RightPanel';
+import { SalesRegisterView } from './components/SalesRegisterView'; // Nueva Importación
 import { useStock } from './hooks/useStock';
 import { useTheme } from './hooks/useTheme';
 import { useSettings } from './hooks/useSettings';
 import { useChat } from './hooks/useChat';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'chat' | 'settings'>('chat');
+  const [activeTab, setActiveTab] = useState<'chat' | 'settings' | 'sales'>('chat'); // Estado actualizado
 
   // Modular Logic Hooks
   const { isDarkMode, toggleDarkMode } = useTheme();
@@ -36,6 +37,10 @@ export default function App() {
                 handleSubmit={handleSubmit}
                 chatFeedRef={chatFeedRef}
               />
+            )}
+            
+            {activeTab === 'sales' && (
+              <SalesRegisterView /> /* Nueva Vista */
             )}
             
             {activeTab === 'settings' && (
