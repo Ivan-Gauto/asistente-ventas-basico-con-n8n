@@ -6,80 +6,72 @@ type Props = {
 };
 
 export const Sidebar: React.FC<Props> = ({ activeTab, setActiveTab }) => (
-  <aside className="h-screen w-64 flex flex-col p-4 gap-2 bg-[#f9f9ff] dark:bg-slate-950 border-r border-[#cbd5e1] dark:border-outline-variant/10 font-headline font-medium text-sm z-50">
-    <div className="px-2 mb-8 mt-2">
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-[#0262a5] dark:bg-[#65a7ef] flex items-center justify-center text-white font-bold shadow-lg">
-          SC
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-[#0262a5] dark:text-[#65a7ef] tracking-tight leading-none">
-            Asistente de Ventas
-          </h2>
-          <span className="text-[10px] text-[#5a5f6a] dark:text-slate-400 font-bold uppercase tracking-wider">
-            Asistente Principal
-          </span>
-        </div>
+  <aside className="h-screen w-60 flex flex-col p-3 bg-white dark:bg-[#0a0a0a] border-r border-[#cbd5e1] dark:border-white/5 font-headline font-medium text-[13px] z-50 transition-colors duration-300">
+    <div className="px-3 mb-6 mt-2">
+      <div className="flex items-center gap-2">
+        <h2 className="text-lg font-bold text-[#0262a5] dark:text-white tracking-tight leading-none italic">
+          Sales Manager
+        </h2>
       </div>
     </div>
 
-    <nav className="flex-1 flex flex-col gap-1">
+    <nav className="flex-1 flex flex-col gap-1 text-slate-600 dark:text-[#8b949e]">
       <a
         onClick={() => setActiveTab('chat')}
-        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 cursor-pointer ${
+        className={`flex items-center gap-2.5 px-3 py-1.5 rounded-md transition-all duration-200 cursor-pointer ${
           activeTab === 'chat'
-            ? 'bg-[#e2e8f0] dark:bg-slate-900 text-[#0262a5] dark:text-[#65a7ef] font-bold shadow-sm'
-            : 'text-[#5a5f6a] dark:text-slate-400 hover:bg-[#f1f3fd] dark:hover:bg-slate-900 border border-transparent hover:border-[#cbd5e1] dark:hover:border-transparent'
+            ? 'bg-slate-100 dark:bg-[#161b22] text-[#0262a5] dark:text-[#65a7ef] font-bold shadow-sm border border-[#cbd5e1] dark:border-white/5'
+            : 'hover:bg-slate-100 dark:hover:bg-[#161b22] hover:text-slate-900 dark:hover:text-white'
         }`}
       >
-        <span className="material-symbols-outlined">dashboard</span>
-        <span>Panel General</span>
+        <span className="material-symbols-outlined text-[18px]">dashboard</span>
+        <span>Asistente</span>
       </a>
 
-      <a className="flex items-center gap-3 px-4 py-3 text-[#5a5f6a] dark:text-slate-400 hover:bg-[#f1f3fd] dark:hover:bg-slate-900 rounded-lg transition-colors duration-200 cursor-pointer border border-transparent hover:border-[#cbd5e1] dark:hover:border-transparent">
-        <span className="material-symbols-outlined">inventory_2</span>
+      <a className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-100 dark:hover:bg-[#161b22] hover:text-slate-900 dark:hover:text-white rounded-md transition-all duration-200 cursor-pointer">
+        <span className="material-symbols-outlined text-[18px]">inventory_2</span>
         <span>Inventario</span>
       </a>
 
       <a
         onClick={() => setActiveTab('sales')}
-        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 cursor-pointer ${
+        className={`flex items-center gap-2.5 px-3 py-1.5 rounded-md transition-all duration-200 cursor-pointer ${
           activeTab === 'sales'
-            ? 'bg-[#e2e8f0] dark:bg-slate-900 text-[#0262a5] dark:text-[#65a7ef] font-bold shadow-sm'
-            : 'text-[#5a5f6a] dark:text-slate-400 hover:bg-[#f1f3fd] dark:hover:bg-slate-900 border border-transparent hover:border-[#cbd5e1] dark:hover:border-transparent'
+            ? 'bg-slate-100 dark:bg-[#161b22] text-[#0262a5] dark:text-[#65a7ef] font-bold shadow-sm border border-[#cbd5e1] dark:border-white/5'
+            : 'hover:bg-slate-100 dark:hover:bg-[#161b22] hover:text-slate-900 dark:hover:text-white'
         }`}
       >
-        <span className="material-symbols-outlined">receipt_long</span>
-        <span>Registro de Ventas</span>
+        <span className="material-symbols-outlined text-[18px]">receipt_long</span>
+        <span>Ventas</span>
       </a>
 
       <a
         onClick={() => setActiveTab('settings')}
-        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 cursor-pointer ${
+        className={`flex items-center gap-2.5 px-3 py-1.5 rounded-md transition-all duration-200 cursor-pointer ${
           activeTab === 'settings'
-            ? 'bg-[#e2e8f0] dark:bg-slate-900 text-[#0262a5] dark:text-[#65a7ef] font-bold shadow-sm'
-            : 'text-[#5a5f6a] dark:text-slate-400 hover:bg-[#f1f3fd] dark:hover:bg-slate-900 border border-transparent hover:border-[#cbd5e1] dark:hover:border-transparent'
+            ? 'bg-slate-100 dark:bg-[#161b22] text-[#0262a5] dark:text-[#65a7ef] font-bold shadow-sm border border-[#cbd5e1] dark:border-white/5'
+            : 'hover:bg-slate-100 dark:hover:bg-[#161b22] hover:text-slate-900 dark:hover:text-white'
         }`}
       >
-        <span className="material-symbols-outlined">settings</span>
+        <span className="material-symbols-outlined text-[18px]">settings</span>
         <span>Configuración</span>
       </a>
     </nav>
 
-    <div className="mt-auto flex flex-col gap-1 border-t border-[#cbd5e1] dark:border-outline-variant/10 pt-4">
-      <button className="mb-4 w-full bg-[#0262a5] dark:bg-[#65a7ef] text-white font-bold py-3 rounded-xl shadow-md hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2">
-        <span className="material-symbols-outlined text-[20px]">add</span>
-        <span>Nueva Venta</span>
+    <div className="mt-auto flex flex-col gap-1 border-t border-[#cbd5e1] dark:border-white/5 pt-3">
+      <button className="mb-4 w-full bg-[#0262a5] dark:bg-[#1d4ed8] text-white font-bold py-2 rounded-xl shadow-md hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2 text-[12px] cursor-pointer">
+        <span className="material-symbols-outlined text-[16px]">add</span>
+        <span>Nueva venta</span>
       </button>
 
-      <a className="flex items-center gap-3 px-4 py-2 text-[#5a5f6a] dark:text-slate-400 hover:bg-[#f1f3fd] dark:hover:bg-slate-900 rounded-lg transition-colors duration-200 cursor-pointer">
-        <span className="material-symbols-outlined">help</span>
+      <a className="flex items-center gap-2.5 px-3 py-1.5 text-slate-600 dark:text-[#8b949e] hover:bg-slate-100 dark:hover:bg-[#161b22] hover:text-slate-900 dark:hover:text-white rounded-md transition-all duration-200 cursor-pointer">
+        <span className="material-symbols-outlined text-[18px]">help</span>
         <span>Ayuda</span>
       </a>
 
-      <a className="flex items-center gap-3 px-4 py-2 text-[#5a5f6a] dark:text-slate-400 hover:bg-[#f1f3fd] dark:hover:bg-slate-900 rounded-lg transition-colors duration-200 cursor-pointer">
-        <span className="material-symbols-outlined">logout</span>
-        <span>Cerrar Sesión</span>
+      <a className="flex items-center gap-2.5 px-3 py-1.5 text-slate-600 dark:text-[#8b949e] hover:bg-slate-100 dark:hover:bg-[#161b22] hover:text-slate-900 dark:hover:text-white rounded-md transition-all duration-200 cursor-pointer">
+        <span className="material-symbols-outlined text-[18px]">logout</span>
+        <span>Cerrar sesion</span>
       </a>
     </div>
   </aside>

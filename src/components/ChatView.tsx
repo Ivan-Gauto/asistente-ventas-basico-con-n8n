@@ -21,110 +21,106 @@ export const ChatView: React.FC<Props> = ({
   <>
     <div
       ref={chatFeedRef}
-      className="flex-1 overflow-y-auto px-8 pt-8 pb-32 flex flex-col hide-scrollbar scroll-smooth bg-white dark:bg-[#0c0e13]"
+      className="flex-1 overflow-y-auto px-6 pt-6 pb-24 flex flex-col hide-scrollbar scroll-smooth bg-white dark:bg-[#0a0a0a] transition-colors duration-300"
     >
-      {messages.length === 0 ? (
-        <div className="flex-1 flex flex-col items-center justify-center text-center mt-12">
-          <div className="max-w-md">
-            <div className="w-16 h-16 bg-[#0262a5]/10 dark:bg-[#00497d]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[#0262a5]/20">
-              <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] text-3xl">
-                chat_bubble
-              </span>
-            </div>
-            <h1 className="font-headline font-bold text-2xl text-[#2d333d] dark:text-[#e2e2e6] mb-2">
-              ¿En qué puedo ayudarte hoy?
-            </h1>
-            <p className="font-body text-[#5a5f6a] dark:text-[#c4c7cf] mb-8">
-              Listo para gestionar el inventario, revisar pedidos o redactar mensajes para tus clientes.
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={() => setInputValue('Revisar inventario')}
-                className="p-4 bg-[#f9f9ff] dark:bg-[#1a1c1e] rounded-xl text-left hover:brightness-95 transition-all duration-200 border border-[#cbd5e1] dark:border-[#44474e]/20 shadow-sm cursor-pointer"
-              >
-                <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] mb-2 block">
-                  inventory_2
+      <div className="max-w-3xl mx-auto w-full flex-1 flex flex-col">
+        {messages.length === 0 ? (
+          <div className="flex-1 flex flex-col items-center justify-center text-center mt-6 animate-in fade-in duration-500">
+            <div className="max-w-md">
+              <div className="w-12 h-12 bg-slate-100 dark:bg-[#161b22] rounded-xl flex items-center justify-center mx-auto mb-4 border border-[#cbd5e1] dark:border-white/5">
+                <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] text-2xl">
+                  chat_bubble
                 </span>
-                <span className="font-label font-semibold text-sm block text-[#2d333d] dark:text-[#e2e2e6]">
-                  Revisar Inventario
-                </span>
-                <span className="font-label text-xs text-[#5a5f6a] dark:text-[#c4c7cf]">
-                  Niveles de stock reales
-                </span>
-              </button>
-              <button
-                onClick={() => setInputValue('Reporte de ventas')}
-                className="p-4 bg-[#f9f9ff] dark:bg-[#1a1c1e] rounded-xl text-left hover:brightness-95 transition-all duration-200 border border-[#cbd5e1] dark:border-[#44474e]/20 shadow-sm cursor-pointer"
-              >
-                <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] mb-2 block">
-                  analytics
-                </span>
-                <span className="font-label font-semibold text-sm block text-[#2d333d] dark:text-[#e2e2e6]">
-                  Reporte de Ventas
-                </span>
-                <span className="font-label text-xs text-[#5a5f6a] dark:text-[#c4c7cf]">
-                  Rendimiento diario
-                </span>
-              </button>
+              </div>
+              <h1 className="font-headline font-bold text-xl text-slate-900 dark:text-white mb-1">
+                Assistant Services
+              </h1>
+              <p className="font-body text-[13px] text-slate-600 dark:text-[#8b949e] mb-6">
+                How can I help you today?
+              </p>
+              <div className="grid grid-cols-2 gap-2 text-slate-900 dark:text-white">
+                <button
+                  onClick={() => setInputValue('Check stock')}
+                  className="p-3 bg-white dark:bg-[#111] rounded-lg text-left hover:bg-slate-50 dark:hover:bg-[#161b22] transition-all duration-200 border border-[#cbd5e1] dark:border-white/5 shadow-sm cursor-pointer group"
+                >
+                  <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] text-[18px] mb-1.2 block opacity-80 group-hover:opacity-100">
+                    inventory_2
+                  </span>
+                  <span className="font-label font-semibold text-[11px] block opacity-80 group-hover:opacity-100 uppercase tracking-widest text-[#0262a5] dark:text-white">
+                    Inventory
+                  </span>
+                </button>
+                <button
+                  onClick={() => setInputValue('Sales report')}
+                  className="p-3 bg-white dark:bg-[#111] rounded-lg text-left hover:bg-slate-50 dark:hover:bg-[#161b22] transition-all duration-200 border border-[#cbd5e1] dark:border-white/5 shadow-sm cursor-pointer group"
+                >
+                  <span className="material-symbols-outlined text-[#0262a5] dark:text-[#65a7ef] text-[18px] mb-1.2 block opacity-80 group-hover:opacity-100">
+                    analytics
+                  </span>
+                  <span className="font-label font-semibold text-[11px] block opacity-80 group-hover:opacity-100 uppercase tracking-widest text-[#0262a5] dark:text-white">
+                    Report
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="space-y-6 flex flex-col pb-6">
-          {messages.map((m) => (
-            <div
-              key={m.id}
-              className={
-                m.isUser
-                  ? 'flex flex-col items-end w-full animate-in slide-in-from-right-4 duration-300'
-                  : 'flex flex-col items-start max-w-3xl animate-in slide-in-from-left-4 duration-300'
-              }
-            >
+        ) : (
+          <div className="space-y-6 flex flex-col pb-4">
+            {messages.map((m) => (
               <div
+                key={m.id}
                 className={
                   m.isUser
-                    ? 'bg-[#0262a5] text-white p-4 rounded-2xl rounded-tr-sm shadow-md max-w-[70%]'
-                    : 'bg-[#f1f3fd] dark:bg-[#282a2e] text-[#2d333d] dark:text-[#e2e2e6] p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#cbd5e1] dark:border-[#44474e]/20'
+                    ? 'flex flex-col items-end w-full animate-in slide-in-from-bottom-2 duration-300'
+                    : 'flex flex-col items-start w-full animate-in slide-in-from-bottom-2 duration-300'
                 }
               >
-                <p className="font-body leading-relaxed whitespace-pre-wrap text-sm">{m.text}</p>
+                <div
+                  className={
+                    m.isUser
+                      ? 'bg-[#0262a5] dark:bg-[#1d4ed8] text-white px-4 py-2.5 rounded-2xl max-w-[85%] shadow-sm'
+                      : 'bg-slate-100 dark:bg-[#161b22] text-slate-900 dark:text-[#e2e2e6] px-4 py-2.5 rounded-2xl max-w-[90%] border border-[#cbd5e1] dark:border-white/5 shadow-sm'
+                  }
+                >
+                  <p className="font-body leading-relaxed whitespace-pre-wrap text-[13px]">{m.text}</p>
+                </div>
+                <span className="mt-1.5 mx-1 text-[9px] text-[#8b949e] font-label uppercase tracking-widest opacity-60">
+                  {m.time} • {m.isUser ? 'User' : 'Assistant'}
+                </span>
               </div>
-              <span className="mt-1.5 mx-1 text-[10px] text-[#5a5f6a] dark:text-[#c4c7cf] font-label uppercase tracking-widest opacity-80">
-                {m.time} • {m.isUser ? 'Vendedor' : 'Asistente IA'}
-              </span>
-            </div>
-          ))}
-          {isTyping && (
-            <div className="flex flex-col items-start max-w-3xl animate-in fade-in duration-300">
-              <div className="bg-[#f1f3fd] dark:bg-[#282a2e] p-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5 border border-[#cbd5e1] dark:border-[#44474e]/20">
-                <div className="w-1.5 h-1.5 bg-[#5a5f6a] dark:bg-[#c4c7cf] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                <div className="w-1.5 h-1.5 bg-[#5a5f6a] dark:bg-[#c4c7cf] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                <div className="w-1.5 h-1.5 bg-[#5a5f6a] dark:bg-[#c4c7cf] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+            ))}
+            {isTyping && (
+              <div className="flex flex-col items-start w-full animate-in fade-in duration-300">
+                <div className="bg-slate-100 dark:bg-[#161b22] px-4 py-2 rounded-2xl flex items-center gap-1 border border-[#cbd5e1] dark:border-white/5">
+                  <div className="w-1 h-1 bg-slate-400 dark:bg-[#8b949e] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <div className="w-1 h-1 bg-slate-400 dark:bg-[#8b949e] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <div className="w-1 h-1 bg-slate-400 dark:bg-[#8b949e] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
+      </div>
     </div>
 
-    <div className="px-8 pb-8 pt-4 absolute bottom-0 w-full bg-gradient-to-t from-white dark:from-[#0c0e13] via-white/80 dark:via-[#0c0e13]/80 to-transparent">
-      <div className="max-w-4xl mx-auto relative">
+    <div className="px-6 pb-6 pt-2 absolute bottom-0 w-full bg-gradient-to-t from-white dark:from-[#0a0a0a] via-white/90 dark:via-[#0a0a0a]/90 to-transparent pointer-events-none">
+      <div className="max-w-3xl mx-auto relative px-2 pointer-events-auto">
         <form
           onSubmit={handleSubmit}
-          className="flex items-center bg-[#f9f9ff] dark:bg-[#1a1c1e] rounded-full p-2 pl-6 pr-2 shadow-sm focus-within:ring-2 focus-within:ring-[#0262a5]/40 dark:focus-within:ring-[#65a7ef]/40 transition-all duration-300 border border-[#cbd5e1] dark:border-[#44474e]/20"
+          className="flex items-center bg-white dark:bg-[#111] rounded-full p-1 pl-4 pr-1 shadow-md focus-within:ring-2 focus-within:ring-[#0262a5]/30 dark:focus-within:ring-[#1d4ed8]/40 transition-all duration-300 border border-[#cbd5e1] dark:border-white/5"
         >
           <input
-            className="flex-1 bg-transparent border-none focus:ring-0 text-[#2d333d] dark:text-[#e2e2e6] placeholder:text-[#5a5f6a]/60 dark:placeholder:text-[#c4c7cf]/60 font-body px-4 py-3 outline-none"
-            placeholder="Escribe tu instrucción o consulta aquí..."
+            className="flex-1 bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#8b949e]/50 font-body px-2 py-1.5 outline-none text-[13px]"
+            placeholder="Type your message..."
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
           <button
             type="submit"
-            className="bg-[#0262a5] dark:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:translate-y-[-2px] transition-transform duration-200 active:scale-95 shadow-lg cursor-pointer"
+            className="bg-[#0262a5] dark:bg-[#1d4ed8] text-white w-8 h-8 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity duration-200 active:scale-95 cursor-pointer shadow-sm"
           >
-            <span className="material-symbols-outlined">send</span>
+            <span className="material-symbols-outlined text-[16px]">send</span>
           </button>
         </form>
       </div>

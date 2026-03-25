@@ -4,16 +4,15 @@ import { TopBar } from './components/TopBar';
 import { ChatView } from './components/ChatView';
 import { SettingsView } from './components/SettingsView';
 import { RightPanel } from './components/RightPanel';
-import { SalesRegisterView } from './components/SalesRegisterView'; // Nueva Importación
+import { SalesRegisterView } from './components/SalesRegisterView'; 
 import { useStock } from './hooks/useStock';
 import { useTheme } from './hooks/useTheme';
 import { useSettings } from './hooks/useSettings';
 import { useChat } from './hooks/useChat';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'chat' | 'settings' | 'sales'>('chat'); // Estado actualizado
+  const [activeTab, setActiveTab] = useState<'chat' | 'settings' | 'sales'>('chat');
 
-  // Modular Logic Hooks
   const { isDarkMode, toggleDarkMode } = useTheme();
   const { 
     storeName, 
@@ -28,14 +27,18 @@ export default function App() {
   const { messages, inputValue, setInputValue, isTyping, chatFeedRef, handleSubmit } = useChat(webhookUrl);
 
   return (
-    <div className="bg-background text-on-background flex h-screen w-full flex-1 overflow-hidden font-body">
+    <div className={`${isDarkMode ? 'dark' : ''} bg-slate-50 dark:bg-[#0a0a0a] text-slate-900 dark:text-white flex h-screen w-full flex-1 overflow-hidden font-body transition-colors duration-300`}>
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <div className="flex-1 flex flex-col overflow-hidden">
-        <TopBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        <TopBar 
+          isDarkMode={isDarkMode} 
+          toggleDarkMode={toggleDarkMode} 
+          activeTab={activeTab} 
+        />
         
-        <div className="flex h-[calc(100vh-64px)] overflow-hidden">
-          <main className="flex-1 flex flex-col bg-surface-container-lowest dark:bg-[#0c0e13] relative">
+        <div className="flex flex-1 overflow-hidden">
+          <main className="flex-1 flex flex-col bg-slate-50 dark:bg-[#0a0a0a] relative">
             {activeTab === 'chat' && (
               <ChatView
                 messages={messages}
@@ -48,7 +51,7 @@ export default function App() {
             )}
             
             {activeTab === 'sales' && (
-              <SalesRegisterView /> /* Nueva Vista */
+              <SalesRegisterView />
             )}
             
             {activeTab === 'settings' && (
@@ -58,8 +61,8 @@ export default function App() {
                 storeName={storeName}
                 setStoreName={setStoreName}
                 saveSettings={saveSettings}
-                isTestMode={isTestMode} // Nueva Prop
-                toggleTestMode={toggleTestMode} // Nueva Prop
+                isTestMode={isTestMode}
+                toggleTestMode={toggleTestMode}
               />
             )}
           </main>
