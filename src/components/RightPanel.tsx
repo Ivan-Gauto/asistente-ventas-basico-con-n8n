@@ -28,11 +28,8 @@ export const RightPanel: React.FC<Props> = ({ storeName, stockItems, isFetching 
               sync
             </span>
             <h3 className="font-headline font-bold text-lg text-[#2d333d] dark:text-[#e2e2e6] mb-1">
-              Cargando productos...
+              Cargando productos
             </h3>
-            <p className="font-label text-xs">
-              Sincronizando inventario local con Airtable.
-            </p>
           </div>
         ) : (
           <div className="space-y-3 overflow-y-auto hide-scrollbar flex-1 pb-4 animate-in fade-in duration-500">

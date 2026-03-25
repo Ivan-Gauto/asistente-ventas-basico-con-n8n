@@ -113,12 +113,6 @@ export const ChatView: React.FC<Props> = ({
           onSubmit={handleSubmit}
           className="flex items-center bg-[#f9f9ff] dark:bg-[#1a1c1e] rounded-full p-2 pl-6 pr-2 shadow-sm focus-within:ring-2 focus-within:ring-[#0262a5]/40 dark:focus-within:ring-[#65a7ef]/40 transition-all duration-300 border border-[#cbd5e1] dark:border-[#44474e]/20"
         >
-          <button
-            type="button"
-            className="p-2 text-[#5a5f6a] dark:text-[#c4c7cf] hover:text-[#0262a5] dark:hover:text-[#65a7ef] transition-colors cursor-pointer"
-          >
-            <span className="material-symbols-outlined">attach_file</span>
-          </button>
           <input
             className="flex-1 bg-transparent border-none focus:ring-0 text-[#2d333d] dark:text-[#e2e2e6] placeholder:text-[#5a5f6a]/60 dark:placeholder:text-[#c4c7cf]/60 font-body px-4 py-3 outline-none"
             placeholder="Escribe tu instrucción o consulta aquí..."

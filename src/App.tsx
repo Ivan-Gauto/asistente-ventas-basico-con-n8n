@@ -15,7 +15,15 @@ export default function App() {
 
   // Modular Logic Hooks
   const { isDarkMode, toggleDarkMode } = useTheme();
-  const { storeName, setStoreName, webhookUrl, setWebhookUrl, saveSettings } = useSettings();
+  const { 
+    storeName, 
+    setStoreName, 
+    webhookUrl, 
+    setWebhookUrl, 
+    saveSettings,
+    isTestMode,
+    toggleTestMode
+  } = useSettings();
   const { stockItems, isFetching: isFetchingStock } = useStock(webhookUrl);
   const { messages, inputValue, setInputValue, isTyping, chatFeedRef, handleSubmit } = useChat(webhookUrl);
 
@@ -50,6 +58,8 @@ export default function App() {
                 storeName={storeName}
                 setStoreName={setStoreName}
                 saveSettings={saveSettings}
+                isTestMode={isTestMode} // Nueva Prop
+                toggleTestMode={toggleTestMode} // Nueva Prop
               />
             )}
           </main>
