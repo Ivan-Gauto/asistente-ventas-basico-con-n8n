@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { sendToN8nWebhook } from '../n8nApi';
+import { sendToN8nWebhook } from '../api/n8nApi';
 import { Message } from '../types';
 
 export const useChat = (webhookUrl: string) => {
@@ -32,11 +32,21 @@ export const useChat = (webhookUrl: string) => {
     setTimeout(async () => {
       setIsTyping(true);
       try {
+        console.log('🚀 Enviando mensaje a n8n:', text, 'URL:', webhookUrl);
         const data = await sendToN8nWebhook(text, 'chat-react-session', webhookUrl);
-        const aiResponse =
-          typeof data === 'string'
-            ? data
-            : data.response ?? data.message ?? data.output ?? JSON.stringify(data, null, 2);
+        console.log('📦 Respuesta de n8n recibida:', data);
+        
+        let aiResponse = '';
+        if (typeof data === 'string') {
+          aiResponse = data;
+        } else if (data) {
+          // Intentamos extraer el texto de campos comunes
+          aiResponse = data.response ?? data.message ?? data.output ?? data.result ?? (Array.isArray(data) ? data[0]?.output : null) ?? JSON.stringify(data, null, 2);
+        }
+
+        if (!aiResponse || aiResponse === '{}') {
+          aiResponse = 'El asistente recibió una respuesta vacía de n8n. Asegúrate de que el nodo final del workflow esté devolviendo datos.';
+        }
 
         setIsTyping(false);
         const newAiMsg: Message = {
